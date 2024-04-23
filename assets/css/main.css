@@ -1,31 +1,41 @@
-@media (min-width: xs) {
+.container-fluid, .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+@media (min-width: 576px) {
   .container {
-    max-width: 0;
+    max-width: 540px;
   }
 }
-@media (min-width: sm) {
+@media (min-width: 768px) {
   .container {
-    max-width: 576px;
+    max-width: 720px;
   }
 }
-@media (min-width: md) {
+@media (min-width: 992px) {
   .container {
-    max-width: 768px;
+    max-width: 960px;
   }
 }
-@media (min-width: lg) {
+@media (min-width: 1200px) {
   .container {
-    max-width: 992px;
+    max-width: 1140px;
   }
 }
-@media (min-width: xl) {
+@media (min-width: 1400px) {
   .container {
-    max-width: 1200px;
-  }
-}
-@media (min-width: xxl) {
-  .container {
-    max-width: 1400px;
+    max-width: 1320px;
   }
 }
 

@@ -18,10 +18,39 @@ $container-max-widths: (
 $grid-columns: 12;
 $grid-gutter-columns: 30px;
 
+.container-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $grid-gutter-columns * 0.5;
+    padding-right: $grid-gutter-columns * 0.5;
+}
+
+.container {
+    @extend .container-fluid;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$grid-gutter-columns * 0.5;
+    margin-right: -$grid-gutter-columns * 0.5;
+}
+
+@mixin make-media-query($dimension) {
+    @media (min-width: $dimension) {
+        @content;
+    }
+}
+
 @each $break-point, $dimension in $grid-breakpoints {
-    @media (min-width: $break-point) {
+    $max-width: map-get(
+        $map: $container-max-widths,
+        $key: $break-point,
+    );
+    @include make-media-query($dimension) {
         .container {
-            max-width: $dimension;
+            max-width: $max-width;
         }
     }
 }
