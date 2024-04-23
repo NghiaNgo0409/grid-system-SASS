@@ -54,14 +54,9 @@ $gutters: (
     margin-left: calc(--grid-gutter-x * 0.5 * -1);
     margin-right: calc(--grid-gutter-x * 0.5 * -1);
 
-    &[class*="row-cols-"] > *,
-    [class*="col-"] {
-        flex: 0 0 auto;
-        @extend %gutter-padding;
-    }
-
     > * {
         margin-top: var(--grid-gutter-y);
+        @extend %gutter-padding;
     }
 }
 
@@ -83,6 +78,7 @@ $gutters: (
 @mixin make-row-cols($infix) {
     @for $i from 1 through $grid-columns {
         .row-cols#{$infix}-#{i} > * {
+            flex: 0 0 auto;
             width: math.div(100%, $i);
         }
     }
@@ -91,6 +87,7 @@ $gutters: (
 @mixin make-col($infix) {
     @for $i from 1 through $grid-columns {
         .col#{$infix}-#{$i} {
+            flex: 0 0 auto;
             width: math.div(100%, $grid-columns) * $i;
         }
     }
