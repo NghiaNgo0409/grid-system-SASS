@@ -42,6 +42,7 @@ $grid-gutter-columns: 30px;
     margin-left: -$grid-gutter-columns * 0.5;
     margin-right: -$grid-gutter-columns * 0.5;
 
+    &[class*="row-cols-"] > *,
     [class*="col-"] {
         flex: 0 0 auto;
         @extend %gutter-padding;
@@ -63,6 +64,30 @@ $grid-gutter-columns: 30px;
     }
 }
 
+@mixin make-row-cols($infix) {
+    @for $i from 1 through $grid-columns {
+        .row-cols#{$infix}-#{i} > * {
+            width: math.div(100%, $i);
+        }
+    }
+}
+
+@mixin make-col($infix) {
+    @for $i from 1 through $grid-columns {
+        .col#{$infix}-#{$i} {
+            width: math.div(100%, $grid-columns) * $i;
+        }
+    }
+}
+
+@mixin make-offset($infix) {
+    @for $i from 0 to $grid-columns {
+        .offset#{$infix}-#{$i} {
+            margin-left: math.div(100%, $grid-columns) * $i;
+        }
+    }
+}
+
 @each $break-point, $dimension in $grid-breakpoints {
     $max-width: map-get(
         $map: $container-max-widths,
@@ -74,11 +99,9 @@ $grid-gutter-columns: 30px;
         .container {
             max-width: $max-width;
         }
-
-        @for $i from 1 through $grid-columns {
-            .col#{$infix}-#{$i} {
-                width: math.div(100%, $grid-columns) * $i;
-            }
-        }
     }
+
+    @include make-row-cols($infix);
+    @include make-col($infix);
+    @include make-offset($infix);
 }
