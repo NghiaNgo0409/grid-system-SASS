@@ -1,0 +1,32 @@
+@media (min-width: xs) {
+  .container {
+    max-width: 0;
+  }
+}
+@media (min-width: sm) {
+  .container {
+    max-width: 576px;
+  }
+}
+@media (min-width: md) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: lg) {
+  .container {
+    max-width: 992px;
+  }
+}
+@media (min-width: xl) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media (min-width: xxl) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
